@@ -11,8 +11,8 @@ require 'open-uri'
 require 'json'
 
 begin
-  cc = JSON.load(open('http://ip-api.com/json'))
-  country_code = cc['countryCode'].chomp.split ''
+  cc = JSON.load(open('https://ipinfo.io'))
+  country_code = cc['country'].chomp.split ''
   c1, c2 = *country_code.map { |c| (c.ord + 0x65).chr.force_encoding 'UTF-8' }
   puts "\xF0\x9F\x87#{c1}\xF0\x9F\x87#{c2}"
 rescue StandardError => err
